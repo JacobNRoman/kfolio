@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Your Cards{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for card in cards %}
+    <article>
+      <header>
+        <h1>{{ card['title'] }}</h1>
+        <a href="{{ url_for('cards.update', id=card['id']) }}">Edit</a>
+      </header>
+      <p>{{ card['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
